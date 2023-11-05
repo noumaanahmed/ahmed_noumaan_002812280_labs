@@ -8,6 +8,8 @@ package ui.supplier;
 import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -103,6 +105,16 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
+        if(supplier.getProductCatalog().searchProduct(Integer.parseInt(idField.getText())) != null) {
+            Product selectedProduct = supplier.getProductCatalog().searchProduct(Integer.parseInt(idField.getText()));
+            ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, selectedProduct);
+            workArea.add("ViewProductDetailJPanelSupplier", vpdjp);
+            CardLayout layout = (CardLayout) workArea.getLayout();
+            layout.next(workArea);
+        } else {
+            JOptionPane.showMessageDialog(this, "Enter a valid product id", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
         
         
 }//GEN-LAST:event_searchButtonActionPerformed
@@ -110,6 +122,10 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         workArea.remove(this);
+        Component[] componentArray = workArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ManageProductCatalogJPanel manageProductCatalogJPanel = (ManageProductCatalogJPanel) component;
+        manageProductCatalogJPanel.refreshTable();
         CardLayout layout = (CardLayout)workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_jButton1ActionPerformed

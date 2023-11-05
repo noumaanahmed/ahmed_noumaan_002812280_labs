@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
 import ui.LoginScreen;
+import ui.supplier.SupplierWorkAreaJPanel;
 
 /**
  *
@@ -103,14 +104,21 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
         // TODO add your handling code here:
-     
+        ManageSuppliers Panel = new ManageSuppliers(workArea, supplierDirectory);
+        workArea.add("ManageSupplierAdministrative", Panel);
+        CardLayout layout = (CardLayout)workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
-        
- 
-                
+        mainWorkArea.remove(this);
+        Component[] componentArray = mainWorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        LoginScreen loginPanel= (LoginScreen) component;
+        loginPanel.populateSupplierCombo();
+        CardLayout layout = (CardLayout)mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
     }//GEN-LAST:event_btnLogOutActionPerformed
 
     @Override
