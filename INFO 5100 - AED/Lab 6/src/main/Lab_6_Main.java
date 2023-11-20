@@ -94,11 +94,11 @@ public class Lab_6_Main {
     
     private void runAnalysis(){
         // TODO
-        helper.getAverageLikesPerComments(); //Q1
-        helper.getMaxLikeCommentPost(); //Q2
-        helper.getPostWithMostComments(); //Q3
-        helper.getPassiveUsers(); //Q4
-        helper.getPassiveCommentUsers(); //Q5
-        helper.getAverageLikesPerComments(); //Q6 and Q7
+        helper.getAverageLikesPerComments();
+        helper.getMaxLikeCommentPost();
+        helper.getPostWithMostComments();
+        helper.getPassiveUsers();
+        helper.getPassiveCommentUsers();
+        helper.getPassiveAndActiveOverallUsers();
     }
 }

@@ -10,19 +10,32 @@ import model.User;
 
 /**
  *
- * @author rahul
+ * @author rachanakeshav
  */
-public class UserMapComparator implements Comparator<User> {
-
+public class UserMapComparator implements Comparator<User>{ 
+    
     HashMap<Integer, Integer> userPostMap;
+    
     
     public UserMapComparator(HashMap<Integer, Integer> userPostMap) {
         this.userPostMap = userPostMap;
     }
+    
 
     @Override
     public int compare(User o1, User o2) {
-        return Integer.compare(userPostMap.get(o1.getId()), userPostMap.get(o2.getId()));
+        
+        return Integer.compare(
+                ((userPostMap.get(o1.getId()) == null) ? 0 : userPostMap.get(o1.getId())),
+                ((userPostMap.get(o2.getId()) == null) ? 0 : userPostMap.get(o2.getId()))
+        );
+                
+        
+        
+        
+     
+        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+     
 }
